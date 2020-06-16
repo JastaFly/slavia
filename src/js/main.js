@@ -135,27 +135,31 @@ const count = function (elem, val) {
 };
 
 const change_product = function (number, elem) {
+    let doble_button = elem.classList.contains('opacity-button_active');
     let screen_width = screen.width;
     let active;
     let select_slider;
     let active_class;
-    if (screen_width > 568) {
-        active = document.getElementsByClassName('product-slider_active');
-        select_slider = sliders[number];
-        active_class = 'product-slider_active';
-    } else {
-        active = document.getElementsByClassName('mobile-slider_active');
-        select_slider = mobile_sliders[number];
-        active_class = 'product-slider_active';
-        active_class = 'mobile-slider_active';
+    if (doble_button == false) {
+        if (screen_width > 568) {
+            active = document.getElementsByClassName('product-slider_active');
+            select_slider = sliders[number];
+            active_class = 'product-slider_active';
+        } else {
+            active = document.getElementsByClassName('mobile-slider_active');
+            select_slider = mobile_sliders[number];
+            active_class = 'product-slider_active';
+            active_class = 'mobile-slider_active';
+        }
+        $(select_slider).fadeIn(500);
+        $(active[0]).fadeOut(500);
+        active[0].classList.remove(active_class);
+        select_slider.classList.add(active_class);
+        let active_button = document.getElementsByClassName('opacity-button_active')[0];
+        active_button.classList.remove('white-button', 'opacity-button_active');
+        elem.classList.add('white-button', 'opacity-button_active');
     }
-    $(select_slider).fadeIn(500);
-    $(active[0]).fadeOut(500);
-    active[0].classList.remove(active_class);
-    select_slider.classList.add(active_class);
-    let active_button = document.getElementsByClassName('opacity-button_active')[0];
-    active_button.classList.remove('white-button', 'opacity-button_active');
-    elem.classList.add('white-button', 'opacity-button_active');
+
 };
 const add_new = function (elem) {
     let add = elem.classList.contains('new__select_add');
@@ -343,4 +347,9 @@ const show_privacy = function () {
     header.style.filter = 'blur(10px)';
     main.style.filter = 'blur(10px)';
     footer.style.filter = 'blur(10px)';
-}
+};
+
+document.addEventListener('click', function(e) {
+    let russia = document.getElementsByClassName('russia-map')[0];
+        russia.style.pointerEvents = 'auto';
+});
