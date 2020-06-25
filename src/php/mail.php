@@ -56,7 +56,7 @@ if (!empty($_POST)) {
                             continue;
                         }
                         elseif ($j == 2) {
-                            $quantity = '<b>Колличество:</b> ';
+                            $quantity = '<b>Количество:</b> ';
                             $end = " шт <br>";
                         }
                         $order .= $quantity . $_POST[3][$i][$j] . $end;
@@ -75,15 +75,17 @@ if (!empty($_POST)) {
                 $mail->SMTPAuth = true;
 
                 // Настройки почты
-                $mail->Host = 'smtp.yandex.ru';
-                $mail->Username = 'slavia-pnz@yandex.ru';
-                $mail->Password = 'O59Au8';
+                $mail->Host = 'smtp.gmail.com';
+                $mail->Username = 'verywildweb@gmail.com';
+                $mail->Password = 'yqmsoloedytgoued';
                 $mail->SMTPSecure = 'ssl';
                 $mail->Port = 465;
-                $mail->setFrom('slavia-pnz@yandex.ru', 'slavia.ru');
+                $mail->setFrom('slaviaPenza58@yandex.ru', 'slavia-optom.ru');
 
                 // Получатель письма
-                $mail->addAddress('slavia-pnz@yandex.ru');
+
+                $mail->addAddress('slaviaPenza58@yandex.ru');
+                $mail->addAddress('maximchumakov@gmail.com');
                 $mail->addAttachment($_FILES['file']['tmp_name'], $_FILES['file']['name']);
 
                 $mail->isHTML(true);

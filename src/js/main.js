@@ -49,10 +49,12 @@ $(document).ready(function () {
 
 $('form').submit(function () {
     let name = this.name.value;
+    console.log(purchases_array);
     let number;
     let message;
     let data;
     let window_form = this.hasAttribute('modal');
+    console.log('Виндовс форм ' + window_form);
     let file_form = this.hasAttribute('file');
     console.log(file_form);
     let file;
@@ -95,6 +97,7 @@ $('form').submit(function () {
             $(modal[2]).slideToggle();
             shadow.style.display = 'block';
             delete_orders();
+            ym(65167672,'reachGoal','zayvka'); return true;
         })
 });
 
@@ -272,7 +275,7 @@ const buy_new = function () {
         for (let i = 0; i < new_selected.length; i++) {
             let props = new Array();
             let name = document.getElementsByClassName('new__select_add')[i].parentNode.parentNode.children[0].innerHTML;
-            let prop = document.getElementsByClassName('new__select_add')[i].parentNode.parentNode.children[2].innerHTML;
+            let prop = document.getElementsByClassName('new__select_add')[i].parentNode.parentNode.children[3].children[1].innerHTML;
             let val = 1;
             props.push(name, prop, val);
             purchases_array.push(props);
@@ -350,6 +353,11 @@ const show_privacy = function () {
 };
 
 document.addEventListener('click', function(e) {
+    console.log(e.target);
     let russia = document.getElementsByClassName('russia-map')[0];
+    if(e.target.id === 'russia-map') {
         russia.style.pointerEvents = 'auto';
+    } else {
+        russia.style.pointerEvents = 'none';
+    }
 });
